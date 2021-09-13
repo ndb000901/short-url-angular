@@ -1,0 +1,27 @@
+<nz-table #basicTable [nzShowPagination]=false [nzData]="vips">
+    <thead>
+      <tr>
+        <th>会员类别</th>
+        <th>容量大小</th>
+        <th>月卡</th>
+        <th>季卡</th>
+        <th>年卡</th>
+        <th>购买</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.type }} </td>
+        <td>{{ data.max }}</td>
+        <td>{{ data.price[0] }}元</td>
+        <td>{{ data.price[1] }}元</td>
+        <td>{{ data.price[2] }}元</td>
+        <td>
+          <a>升级</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a>Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+

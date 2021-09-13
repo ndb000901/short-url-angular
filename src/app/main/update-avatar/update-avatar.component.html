@@ -1,0 +1,30 @@
+<div nz-row nzJustify="center">
+    <div nz-col nzSpan="4">
+    <div>
+      <!-- <nz-avatar [nzSize]="120" nzIcon="user" nzSrc="https://avatars.githubusercontent.com/u/48900845?s=400&u=51247b78d01a2a902efe0de4d73780fde0027dd9&v=4"></nz-avatar> -->
+      <nz-avatar [nzSize]="120" nzIcon="user" nzSrc="https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20190621/d940a528fbfb4ec8a443215ba4e8b888.jpeg"></nz-avatar>
+    </div>
+  </div>
+  </div>
+  <div nz-row nzJustify="center">
+    <div nz-col nzSpan="4">
+      <nz-upload
+      class="avatar-uploader"
+      nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+      nzName="avatar"
+      nzListType="picture-card"
+      [nzShowUploadList]="false"
+      [nzBeforeUpload]="beforeUpload"
+      (nzChange)="handleChange($event)"
+    >
+      <ng-container *ngIf="!avatarUrl">
+        <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+        <div class="ant-upload-text">Upload</div>
+      </ng-container>
+      <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+    </nz-upload>
+    </div>
+  
+  </div>
+  
+    

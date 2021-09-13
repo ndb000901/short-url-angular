@@ -1,0 +1,51 @@
+
+    <ul nz-menu nzMode="inline" style="width: 100%;" [nzTheme]="theme ? 'dark' : 'light'" >
+
+        <li nz-submenu nzOpen nzTitle="用户信息" nzIcon="user">
+          <ul>
+            <li nz-menu-item routerLink="/main/user/info">信息概述</li>
+            <li nz-submenu nzTitle="修改信息" nzIcon="user" nzOpen>
+            <ul>
+              <li nz-menu-item routerLink="/main/userinfo/edit/name">修改用户名</li>
+              <li nz-menu-item routerLink="/main/userinfo/edit/avatar">修改头像</li>
+              <li nz-menu-item routerLink="/main/userinfo/edit/passwd">修改密码</li>
+              <li nz-menu-item routerLink="/main/userinfo/reset/passwd">重置密码</li>
+              <li nz-menu-item routerLink="/main/userinfo/edit/email">修改邮箱</li>
+            </ul>
+          </li>
+            <!-- <li nz-submenu nzTitle="Submenu">
+              <ul>
+                <li nz-menu-item>Option 7</li>
+                <li nz-menu-item>Option 8</li>
+              </ul>
+            </li> -->
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="短链列表" nzIcon="read">
+          <ul>
+            <li nz-menu-item routerLink="/main/linklist">列表详情</li>
+            <li nz-submenu nzTitle="修改信息" nzIcon="user" nzOpen>
+              <ul>
+                <li nz-menu-item routerLink="/main/linklist/edit">更改数据</li>
+                <li nz-menu-item routerLink="/main/linklist/delete">删除数据</li>
+                <li nz-menu-item routerLink="/main/linklist/add">增加数据</li>
+              </ul>
+            
+          </ul>
+        </li>
+  
+        <li nz-submenu nzOpen nzTitle="套餐详情" nzIcon="read">
+          <ul>
+            <li nz-menu-item routerLink="/main/vipinfo">升级套餐</li>
+            <li nz-menu-item>修改列表</li>
+            <li nz-menu-item>Option 11</li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="关于我们" nzIcon="read">
+          <ul>
+            <li nz-menu-item>联系我们</li>
+            <li nz-menu-item>我的位置</li>
+          </ul>
+        </li>
+      </ul>
+    

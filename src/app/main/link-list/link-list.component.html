@@ -1,0 +1,31 @@
+
+    <nz-table #rowSelectionTable nzShowSizeChanger nzTableLayout="fixed" [nzScroll]="{ x: '1200px'}" [nzData]="urls" (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+        <thead>
+          <tr>
+  
+            <th nzWidth=8%>序号</th>
+            <th nzWidth=20%>短链</th>
+            <th nzWidth=30%>长链</th>
+            <th nzWidth=15%>创建时间</th>
+            <th nzWidth=10%>点击量</th>
+            <th nzWidth=10%> 别名</th>
+            <th nzRight nzWidth=8%>二维码</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of rowSelectionTable.data">
+            <!-- <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td> -->
+            <td>{{ data.id}}</td>
+            <td title="http://127.0.0.1:8080/s/{{data.surl}}" [nzEllipsis]=true><button nz-button nzSize=“small” nzShape="circle" (click)="copyMessage('http://127.0.0.1:8080/s/' + data.surl)"><i nz-icon title="点击复制" nzType="copy" nzTheme="outline"></i></button> http://127.0.0.1:8080/s/{{ data.surl }} </td>
+            <td title="{{data.lurl}}"   [nzEllipsis]=true nzTableLayout="fixed"><button nz-button nzSize=“small” nzShape="circle" (click)="copyMessage(data.lurl)"><i nz-icon title="点击复制" nzType="copy" nzTheme="outline"></i></button> {{ data.lurl }} </td>
+            <td>{{ data.created_datetime }}</td>
+            <td [nzEllipsis]=true>{{ data.click_count }}</td>
+            <td>{{ data.alias }}</td>
+            <td nzRight><button nz-button nzSize=“small” nzShape="circle" (click)="this.showHaha('http://127.0.0.1:8080/s/' + data.surl)"><i nz-icon title="二维码" nzType="qrcode" nzTheme="outline"></i></button></td>
+            <!-- <td nzRight><a><i nz-icon title="二维码" nzType="qrcode" nzTheme="outline"></i></a></td> -->
+            <!-- <td nzRight><button nz-button nzType="default" nzSize=“small” nzShape="circle" (click)="showDeleteConfirm()"><i nz-icon title="删除" nzType="delete" nzTheme="outline"></i></button></td> -->
+          </tr>
+        </tbody>
+      </nz-table>
+    
+  

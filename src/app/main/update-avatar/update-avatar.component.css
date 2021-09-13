@@ -1,0 +1,10 @@
+
+      :host ::ng-deep .avatar-uploader > .ant-upload {
+        width: 128px;
+        height: 128px;
+      }
+      nz-avatar {
+        margin-top: 16px;
+        margin-right: 16px;
+      }
+    

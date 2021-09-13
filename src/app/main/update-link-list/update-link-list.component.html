@@ -1,0 +1,47 @@
+<nz-table #editRowTable nzBordered [nzData]="listOfData" [nzScroll]="{ x: '1200px'}" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th nzWidth=6%>序号</th>
+        <th nzWidth=20%>短链</th>
+        <th nzWidth=30%>长链</th>
+        <th nzWidth=15%>创建时间</th>
+        <th nzWidth=10%>点击量</th>
+        <th nzWidth=10%> 别名</th>
+        <th nzRight nzWidth=10%>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of editRowTable.data">
+        <ng-container *ngIf="!editCache[data.id].edit; else editTemplate">
+  
+          <td>{{ data.id}}</td>
+            <td title="http://127.0.0.1:8080/s/{{data.surl}}" [nzEllipsis]=true><button nz-button nzSize=“small” nzShape="circle" (click)="copyMessage('http://127.0.0.1:8080/s/' + data.surl)"><i nz-icon title="点击复制" nzType="copy" nzTheme="outline"></i></button> http://127.0.0.1:8080/s/{{ data.surl }} </td>
+            <td title="{{data.lurl}}"   [nzEllipsis]=true nzTableLayout="fixed"><button nz-button nzSize=“small” nzShape="circle" (click)="copyMessage(data.lurl)"><i nz-icon title="点击复制" nzType="copy" nzTheme="outline"></i></button> {{ data.lurl }} </td>
+            <td>{{ data.created_datetime }}</td>
+            <td>{{ data.click_count }}</td>
+            <td title="{{data.alias}}" [nzEllipsis]=true>{{ data.alias }}</td>
+            <!-- <i nz-icon nzType="edit" nzTheme="outline"></i> -->
+            <td nzRight><button nz-button nzSize=“small” nzShape="circle" (click)="startEdit(data.id)"><i nz-icon title="编辑" nzType="edit" nzTheme="outline"></i></button></td>
+          <!-- <td nzRight><a (click)="startEdit(data.id)">编辑</a></td> -->
+        </ng-container>
+        <ng-template #editTemplate>
+  
+          <td>{{ data.id}}</td>
+          <td title="http://127.0.0.1:8080/s/{{data.surl}}" [nzEllipsis]=true><button nz-button nzSize=“small” nzShape="circle" (click)="copyMessage('http://127.0.0.1:8080/s/' + data.surl)"><i nz-icon title="点击复制" nzType="copy" nzTheme="outline"></i></button> http://127.0.0.1:8080/s/{{ data.surl }} </td>
+          
+          <!-- <td title="{{data.lurl}}"   [nzEllipsis]=true nzTableLayout="fixed"><button nz-button nzSize=“small” nzShape="circle" (click)="copyMessage(data.lurl)"><i nz-icon title="点击复制" nzType="copy" nzTheme="outline"></i></button> {{ data.lurl }} </td> -->
+          <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.lurl" /></td>
+          <td>{{ data.created_datetime }}</td>
+          <td>{{ data.click_count }}</td>
+          <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.alias" /></td>
+          <td nzRight>
+            <a (click)="saveEdit(data.id)" class="save">保存</a>
+            <a nz-popconfirm nzPopconfirmTitle="Sure to cancel?" (nzOnConfirm)="cancelEdit(data.id)">取消</a>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </nz-table>
+  
+  <!-- <button click()="click()">sss</button> -->
+  
